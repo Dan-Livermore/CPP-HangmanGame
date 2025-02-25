@@ -1,5 +1,5 @@
 # CPP-HangmanGame
-Used to get used to syntax of C++.
+Used to get learn to syntax of C++.
 
 Updates:
 - Finish Game
@@ -7,4 +7,6 @@ Updates:
 - Edit / Remove Words From Pool
 - Difficulty Settings Based On Turn Count
 - GUI
+- Remembers win / loss stats
+- Optimise
 
