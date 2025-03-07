@@ -9,34 +9,148 @@ int hangmanLength;
 bool GameRunning = false;
 bool GameStarted = false;
 int turn;
+int steps = 0;
 
-void updateScore(bool found){
-    if (hangman == chosenWord){
+void displayHangman()
+{
+    switch (steps)
+    {
+    case 1:
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        break;
+    case 2:
+        cout << "" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 3:
+        cout << " +--+" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 4:
+        cout << " +--+" << endl;
+        cout << " |  |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 5:
+        cout << " +--+" << endl;
+        cout << " |  |" << endl;
+        cout << " O  |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 6:
+        cout << " +--+" << endl;
+        cout << " |  |" << endl;
+        cout << " O  |" << endl;
+        cout << " |  |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 7:
+        cout << " +--+" << endl;
+        cout << " |  |" << endl;
+        cout << " O  |" << endl;
+        cout << "/|  |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 8:
+        cout << " +--+" << endl;
+        cout << " |  |" << endl;
+        cout << " O  |" << endl;
+        cout << "/|\\ |" << endl;
+        cout << "    |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 9:
+        cout << " +--+" << endl;
+        cout << " |  |" << endl;
+        cout << " O  |" << endl;
+        cout << "/|\\ |" << endl;
+        cout << "/   |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        break;
+    case 10:
+        cout << " +--+" << endl;
+        cout << " |  |" << endl;
+        cout << " O  |" << endl;
+        cout << "/|\\ |" << endl;
+        cout << "/ \\ |" << endl;
+        cout << "    |" << endl;
+        cout << "=====" << endl;
+        turn = 10;
+        break;
+    default:
+        cout << "Invalid turn" << endl;
+        break;
+    }
+}
+
+void updateScore(bool found)
+{
+    if (hangman == chosenWord)
+    {
         cout << "You won!" << endl;
         GameStarted = false;
     }
-    if (turn == 9){
+    if (turn == 10)
+    {
         cout << "Game Over!" << endl;
         GameStarted = false;
-    };    
+    };
     cout << "" << endl;
     turn++;
 }
 
-void validateGuess(char guess){
+void validateGuess(char guess)
+{
     bool found = false;
-    for (int i = 0; i < hangmanLength; i++) {
+    for (int i = 0; i < hangmanLength; i++)
+    {
         // If letter is in the word, update hangman. Keep going for duplicate characters
-        if (chosenWord[i] == guess) {
+        if (chosenWord[i] == guess)
+        {
             hangman[i] = guess;
             found = true;
         }
     }
     cout << hangman << endl;
+    if (!found){
+        steps++;
+        
+    }
+    displayHangman();
     updateScore(found);
 }
 
-void playerGuesses(){
+void playerGuesses()
+{
     cout << "Hangman: " << hangman << endl;
     char guess;
     cout << "Enter a letter: ";
@@ -45,37 +159,42 @@ void playerGuesses(){
     validateGuess(guess);
 }
 
-void prepareHangman(char hangman[]){
+void prepareHangman(char hangman[])
+{
     hangmanLength = chosenWord.length();
-    for (int i = 0; i < hangmanLength; i++) {
+    for (int i = 0; i < hangmanLength; i++)
+    {
         hangman[i] = '_';
     }
     hangman[hangmanLength] = '\0'; // Limits the char array to length of the word
 }
 
-void selectWord(string &chosenWord){
+void selectWord(string &chosenWord)
+{
     chosenWord = "";
     int randomIndex = rand() % 7;
     chosenWord = words[randomIndex];
     prepareHangman(hangman);
 }
 
-void initGame(){
+void initGame()
+{
     // Selects a word and prepares globals for the game
     selectWord(chosenWord);
     GameStarted = true;
     turn = 0;
 }
 
-void startup(bool &GameRunning){
+void startup(bool &GameRunning)
+{
     cout << "Welcome to C++ Hangman Game!" << endl;
     std::cout << R"(
-         __    __       ___       __   __    _______  ___  ___       ___       __   __       _______      ___       ___  ___   _______  __  
-        |  |  |  |     /   \     |  \ |  |  /  _____||   \/   |     /   \     |  \ |  |     /  _____|    /   \     |   \/   | |   ____||  | 
-        |  |__|  |    /  ^  \    |   \|  | |  |  __  |  \  /  |    /  ^  \    |   \|  |    |  |  __     /  ^  \    |  \  /  | |  |__   |  | 
-        |   __   |   /  /_\  \   |       | |  | |_ | |  |\/|  |   /  /_\  \   |       |    |  | |_ |   /  /_\  \   |  |\/|  | |   __|  |  | 
-        |  |  |  |  /  _____  \  |  |\   | |  |__| | |  |  |  |  /  _____  \  |  |\   |    |  |__| |  /  _____  \  |  |  |  | |  |____ |__| 
-        |__|  |__| /__/     \__\ |__| \__|  \______| |__|  |__| /__/     \__\ |__| \__|     \______| /__/     \__\ |__|  |__| |_______|(__) 
+         __    __       ___       __   __    _______  ___  ___       ___       __   __       _______      ___       ___  ___   _______ 
+        |  |  |  |     /   \     |  \ |  |  /  _____||   \/   |     /   \     |  \ |  |     /  _____|    /   \     |   \/   | |   ____|
+        |  |__|  |    /  ^  \    |   \|  | |  |  __  |  \  /  |    /  ^  \    |   \|  |    |  |  __     /  ^  \    |  \  /  | |  |__   
+        |   __   |   /  /_\  \   |       | |  | |_ | |  |\/|  |   /  /_\  \   |       |    |  | |_ |   /  /_\  \   |  |\/|  | |   __|  
+        |  |  |  |  /  _____  \  |  |\   | |  |__| | |  |  |  |  /  _____  \  |  |\   |    |  |__| |  /  _____  \  |  |  |  | |  |____ 
+        |__|  |__| /__/     \__\ |__| \__|  \______| |__|  |__| /__/     \__\ |__| \__|     \______| /__/     \__\ |__|  |__| |_______|
                                                                                                                                             
           )" << std::endl;
 
@@ -85,11 +204,14 @@ void startup(bool &GameRunning){
     cout << "Game Start!" << endl;
 }
 
-int main(){
+int main()
+{
     startup(GameRunning);
-    while (GameRunning){
+    while (GameRunning)
+    {
         initGame();
-        while (GameStarted){
+        while (GameStarted)
+        {
             playerGuesses();
             // Player Guesses
             // Check if letter is in the word
@@ -98,7 +220,6 @@ int main(){
             // If turn is 10*, game over
             // If all letters are guessed, game won
             // If game is won or lost, ask if player wants to play again
-            
         }
     }
     return 0;
