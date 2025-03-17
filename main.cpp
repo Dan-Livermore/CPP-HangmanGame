@@ -9,12 +9,21 @@ int hangmanLength;
 bool GameRunning = false;
 bool GameStarted = false;
 int turn;
-int steps = 0;
+int steps;
 
 void displayHangman()
 {
     switch (steps)
     {
+    case 0:
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        cout << "" << endl;
+        break;
     case 1:
         cout << "" << endl;
         cout << "" << endl;
@@ -22,7 +31,7 @@ void displayHangman()
         cout << "" << endl;
         cout << "" << endl;
         cout << "" << endl;
-        cout << "" << endl;
+        cout << "=====" << endl;
         break;
     case 2:
         cout << "" << endl;
@@ -104,11 +113,10 @@ void displayHangman()
         cout << "/ \\ |" << endl;
         cout << "    |" << endl;
         cout << "=====" << endl;
-        turn = 10;
         break;
-    default:
-        cout << "Invalid turn" << endl;
-        break;
+    // default:
+    //     cout << "Invalid turn" << endl;
+    //     break;
     }
 }
 
@@ -119,10 +127,13 @@ void updateScore(bool found)
         cout << "You won!" << endl;
         GameStarted = false;
     }
-    if (turn == 10)
+    if (turn == 11)
     {
         cout << "Game Over!" << endl;
         GameStarted = false;
+    };
+    if (!GameStarted){
+        cout << "The word was: " << chosenWord << endl;
     };
     cout << "" << endl;
     turn++;
@@ -131,19 +142,32 @@ void updateScore(bool found)
 void validateGuess(char guess)
 {
     bool found = false;
+    bool alreadyGuessed = false;
     for (int i = 0; i < hangmanLength; i++)
     {
-        // If letter is in the word, update hangman. Keep going for duplicate characters
-        if (chosenWord[i] == guess)
+        // Check if the letter is already guessed
+        if (hangman[i] == guess)
         {
-            hangman[i] = guess;
-            found = true;
+            alreadyGuessed = true;
+            cout << "Already guessed!" << endl;
+            break;
         }
     }
-    cout << hangman << endl;
-    if (!found){
-        steps++;
-        
+    if (!alreadyGuessed)
+    {
+        for (int i = 0; i < hangmanLength; i++)
+        {
+            // If letter is in the word, update hangman. Keep going for duplicate characters
+            if (chosenWord[i] == guess)
+            {
+                hangman[i] = guess;
+                found = true;
+            }
+        }
+        if (!found)
+        {
+            steps++;
+        }
     }
     displayHangman();
     updateScore(found);
@@ -183,6 +207,7 @@ void initGame()
     selectWord(chosenWord);
     GameStarted = true;
     turn = 0;
+    steps = 0;
 }
 
 void startup(bool &GameRunning)

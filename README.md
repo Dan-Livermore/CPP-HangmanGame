@@ -10,3 +10,5 @@ Updates:
 - Remembers win / loss stats
 - Optimise
 
+Temp hangman ascii art:
+https://inventwithpython.com/bigbookpython/project34.html
