@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -13,106 +14,140 @@ int steps;
 
 void displayHangman()
 {
+    cout << "" << endl;
     switch (steps)
     {
     case 0:
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
+        cout << " Mistakes: 0 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 1:
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 1 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║           ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 2:
-        cout << "" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 2 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║           ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 3:
-        cout << " +--+" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 3 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 4:
-        cout << " +--+" << endl;
-        cout << " |  |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 4 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 5:
-        cout << " +--+" << endl;
-        cout << " |  |" << endl;
-        cout << " O  |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 5 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║    O  |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 6:
-        cout << " +--+" << endl;
-        cout << " |  |" << endl;
-        cout << " O  |" << endl;
-        cout << " |  |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 6 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║    O  |   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 7:
-        cout << " +--+" << endl;
-        cout << " |  |" << endl;
-        cout << " O  |" << endl;
-        cout << "/|  |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 7 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║    O  |   ║" << endl;
+        cout << "║   /|  |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 8:
-        cout << " +--+" << endl;
-        cout << " |  |" << endl;
-        cout << " O  |" << endl;
-        cout << "/|\\ |" << endl;
-        cout << "    |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 8 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║    O  |   ║" << endl;
+        cout << "║   /|\\ |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 9:
-        cout << " +--+" << endl;
-        cout << " |  |" << endl;
-        cout << " O  |" << endl;
-        cout << "/|\\ |" << endl;
-        cout << "/   |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 9 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║    O  |   ║" << endl;
+        cout << "║   /|\\ |   ║" << endl;
+        cout << "║   /   |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     case 10:
-        cout << " +--+" << endl;
-        cout << " |  |" << endl;
-        cout << " O  |" << endl;
-        cout << "/|\\ |" << endl;
-        cout << "/ \\ |" << endl;
-        cout << "    |" << endl;
-        cout << "=====" << endl;
+        cout << " Mistakes: 10 " << endl;
+        cout << "╔═══════════╗" << endl;
+        cout << "║    +--+   ║" << endl;
+        cout << "║    |  |   ║" << endl;
+        cout << "║    O  |   ║" << endl;
+        cout << "║   /|\\ |   ║" << endl;
+        cout << "║   / \\ |   ║" << endl;
+        cout << "║       |   ║" << endl;
+        cout << "║   =====   ║" << endl;
+        cout << "╚═══════════╝" << endl;
         break;
     // default:
     //     cout << "Invalid turn" << endl;
@@ -122,12 +157,12 @@ void displayHangman()
 
 void updateScore(bool found)
 {
-    if (hangman == chosenWord)
+    if (string(hangman) == chosenWord)
     {
         cout << "You won!" << endl;
         GameStarted = false;
     }
-    if (turn == 11)
+    if (turn == 10)
     {
         cout << "Game Over!" << endl;
         GameStarted = false;
@@ -170,6 +205,7 @@ void validateGuess(char guess)
         }
     }
     displayHangman();
+    cout << "" << endl;
     updateScore(found);
 }
 
@@ -195,7 +231,7 @@ void prepareHangman(char hangman[])
 
 void selectWord(string &chosenWord)
 {
-    chosenWord = "";
+    srand(time(0));
     int randomIndex = rand() % 7;
     chosenWord = words[randomIndex];
     prepareHangman(hangman);
@@ -238,13 +274,6 @@ int main()
         while (GameStarted)
         {
             playerGuesses();
-            // Player Guesses
-            // Check if letter is in the word
-            // If letter is in the word, replace the underscore with the letter
-            // If letter is not in the word, increment the turn
-            // If turn is 10*, game over
-            // If all letters are guessed, game won
-            // If game is won or lost, ask if player wants to play again
         }
     }
     return 0;
