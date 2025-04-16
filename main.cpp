@@ -169,6 +169,21 @@ void updateScore(bool found)
     };
     if (!GameStarted){
         cout << "The word was: " << chosenWord << endl;
+        
+        char playAgain;
+        do {
+            cout << "Play Again? (Y/N): ";
+            cin >> playAgain;
+            playAgain = toupper(playAgain);
+            if (playAgain != 'Y' && playAgain != 'N') {
+                cout << "Invalid input. Please enter 'Y' or 'N'." << endl;
+            }
+        } while (playAgain != 'Y' && playAgain != 'N');
+        
+        if (playAgain == 'N') {
+            cout << "Thank you for playing!" << endl;
+            GameRunning = false;        
+        }
     };
     cout << "" << endl;
     turn++;
@@ -211,6 +226,7 @@ void validateGuess(char guess)
 
 void playerGuesses()
 {
+    cout << "Turn: " << turn + 1 << endl;
     cout << "Hangman: " << hangman << endl;
     char guess;
     cout << "Enter a letter: ";
